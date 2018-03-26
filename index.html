@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>RViz</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=1.0 minimum-scale=1.0, maximum-scale=1.0">
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	</head>
+	<body>
+		<link href="css/main.css" rel="stylesheet" />
+		<link id="theme" href="css/light.css" rel="stylesheet" />
+		<link href="js/Loading/css/loading.css" rel="stylesheet" />
+		<script src="js/Loading/js/load.js"></script>
+
+		<div id="loading">
+			<div id="loading-center">
+				<div id="loading-center-absolute">
+					<div class="object" id="object_one"></div>
+					<div class="object" id="object_two"></div>
+					<div class="object" id="object_three"></div>
+					<div class="object" id="object_four"></div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/Libs/socket.io.js"></script>
+		<script src="js/Libs/roslib/roslib.js"></script>
+
+		<script src="js/Libs/system.min.js"></script>
+		<script src="js/Libs/three/three.js"></script>
+
+		<script src="js/Controls/EditorControls.js"></script>
+		<script src="js/Controls/TransformControls.js"></script>
+
+		<script src="js/Fonts/TextGeometry.js"></script>
+		<script src="js/Fonts/FontUtils.js"></script>
+		<script src="js/Fonts/optimer_bold.typeface.js"></script>
+
+		<script src="js/Libs/signals.min.js"></script>
+		<script src="js/Libs/ui.js"></script>
+		<script src="js/Libs/ui.three.js"></script>
+
+		<script src="js/Storage.js"></script>
+
+		<script src="js/Editor.js"></script>
+		<script src="js/Config.js"></script>
+		<script src="js/History.js"></script>
+		<script src="js/Communication.js"></script>
+
+		<script src="js/Loaders/AMFLoader.js"></script>
+		<script src="js/Loaders/AWDLoader.js"></script>
+		<script src="js/Loaders/BabylonLoader.js"></script>
+		<script src="js/Loaders/ColladaLoader.js"></script>
+		<script src="js/Loaders/FBXLoader.js"></script>
+		<script src="js/Loaders/GLTFLoader.js"></script>
+		<script src="js/Loaders/KMZLoader.js"></script>
+		<script src="js/Loaders/MD2Loader.js"></script>
+		<script src="js/Loaders/OBJLoader.js"></script>
+		<script src="js/Loaders/MTLLoader.js"></script>
+		<script src="js/Loaders/PlayCanvasLoader.js"></script>
+		<script src="js/Loaders/PLYLoader.js"></script>
+		<script src="js/Loaders/STLLoader.js"></script>
+		<script src="js/Loaders/TGALoader.js"></script>
+		<script src="js/Loaders/TDSLoader.js"></script>
+		<script src="js/Loaders/UTF8Loader.js"></script>
+		<script src="js/Loaders/VRMLLoader.js"></script>
+		<script src="js/Loaders/VTKLoader.js"></script>
+		<script src="js/Loaders/ctm/lzma.js"></script>
+		<script src="js/Loaders/ctm/ctm.js"></script>
+		<script src="js/Loaders/ctm/CTMLoader.js"></script>
+		<script src="js/Exporters/OBJExporter.js"></script>
+		<script src="js/Exporters/GLTFExporter.js"></script>
+		<script src="js/Exporters/STLExporter.js"></script>
+		<script src="js/Loader.js"></script>
+
+		<script src="js/Menubar.js"></script>
+		<script src="js/Menubar/Menubar.File.js"></script>
+		<script src="js/Menubar/Menubar.Add.js"></script>
+		<script src="js/Menubar/Menubar.Edit.js"></script>
+
+		<script src="js/Toolbar.js"></script>
+
+		<script src="js/Sidebar.js"></script>
+		<script src="js/Sidebar/Sidebar.Scene.js"></script>
+		<script src="js/Sidebar/Sidebar.Project.js"></script>
+		<script src="js/Sidebar/Sidebar.Settings.js"></script>
+		<script src="js/Sidebar/Sidebar.Settings.Shortcuts.js"></script>
+		<script src="js/Sidebar/Sidebar.Settings.Viewport.js"></script>
+		<script src="js/Sidebar/Sidebar.Properties.js"></script>
+		<script src="js/Sidebar/Sidebar.Object.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.Geometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.BufferGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.Modifiers.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.BoxGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.CircleGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.CylinderGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.IcosahedronGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.PlaneGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.SphereGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.TorusGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.TorusKnotGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.TeapotBufferGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Geometry.LatheGeometry.js"></script>
+		<script src="js/Sidebar/Sidebar.Material.js"></script>
+		<script src="js/Sidebar/Sidebar.Animation.js"></script>
+		<script src="js/Sidebar/Sidebar.Script.js"></script>
+		<!--<script src="js/Sidebar/Sidebar.History.js"></script>-->
+
+		<script src="js/Viewport.js"></script>
+		<script src="js/Viewport.Info.js"></script>
+
+		<script src="js/Command.js"></script>
+		<script src="js/Commands/AddObjectCommand.js"></script>
+		<script src="js/Commands/RemoveObjectCommand.js"></script>
+		<script src="js/Commands/MoveObjectCommand.js"></script>
+		<script src="js/Commands/SetPositionCommand.js"></script>
+		<script src="js/Commands/SetRotationCommand.js"></script>
+		<script src="js/Commands/SetScaleCommand.js"></script>
+		<script src="js/Commands/SetValueCommand.js"></script>
+		<script src="js/Commands/SetUuidCommand.js"></script>
+		<script src="js/Commands/SetColorCommand.js"></script>
+		<script src="js/Commands/SetGeometryCommand.js"></script>
+		<script src="js/Commands/SetGeometryValueCommand.js"></script>
+		<script src="js/Commands/MultiCmdsCommand.js"></script>
+		<script src="js/Commands/AddScriptCommand.js"></script>
+		<script src="js/Commands/RemoveScriptCommand.js"></script>
+		<script src="js/Commands/SetScriptValueCommand.js"></script>
+		<script src="js/Commands/SetMaterialCommand.js"></script>
+		<script src="js/Commands/SetMaterialValueCommand.js"></script>
+		<script src="js/Commands/SetMaterialColorCommand.js"></script>
+		<script src="js/Commands/SetMaterialMapCommand.js"></script>
+		<script src="js/Commands/SetSceneCommand.js"></script>
+
+		<script src="js/Libs/html2canvas.js"></script>
+		<script src="js/Libs/three.html.js"></script>
+
+		<script>
+
+            window.URL = window.URL || window.webkitURL;
+            window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
+
+            Number.prototype.format = function (){
+                return this.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+            };
+
+            //
+
+            var editor = new Editor();
+
+            var viewport = new Viewport( editor );
+            document.body.appendChild( viewport.dom );
+
+            var menubar = new Menubar( editor );
+            document.body.appendChild( menubar.dom );
+
+            var toolbar = new Toolbar( editor );
+            document.body.appendChild( toolbar.dom );
+
+            var sidebar = new Sidebar( editor );
+            document.body.appendChild( sidebar.dom );
+
+            var modal = new UI.Modal();
+            document.body.appendChild( modal.dom );
+
+
+            editor.setTheme( editor.config.getKey( 'theme' ) );
+
+            //
+
+			function onWindowResize()
+			{
+                editor.signals.windowResize.dispatch();
+			}
+            window.addEventListener( 'resize', onWindowResize, false );
+
+            onWindowResize();
+
+            //
+
+            var isLoadingFromHash = false;
+            var hash = window.location.hash;
+//
+            if ( hash.substr( 1, 5 ) === 'file=' ) {
+
+                var file = hash.substr( 6 );
+
+                if ( confirm( 'Any unsaved data will be lost. Are you sure?' ) ) {
+
+                    var loader = new THREE.FileLoader();
+                    loader.crossOrigin = '';
+                    loader.load( file, function ( text ) {
+
+                        editor.clear();
+                        editor.fromJSON( JSON.parse( text ) );
+
+                    } );
+
+                    isLoadingFromHash = true;
+
+                }
+
+            }
+
+
+		</script>
+
+	<button id="test"> hello </button>
+	</body>
+</html>
