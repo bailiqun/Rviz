@@ -52,17 +52,43 @@ var Viewport = function ( editor ) {
 		}
 	}
 
-	var loader = new THREE.ColladaLoader();
-    loader.load("./models/car.dae", function onLoaded(data){
-        var car = data.scene.children[0];
-        car.name = 'robot';
-        car.position.set( 0, 27, 0 );
-        car.rotation.set(-Math.PI / 2 , 0, -Math.PI / 2 );
-        car.geometry.computeBoundingBox();
-        car.geometry.center();
-        this.editor.uuid={'robot' : car.uuid};
-        editor.addObject(car);
+	// dae modles
+    // var loader = new THREE.ColladaLoader();
+    // loader.load("./models/car.dae", function onLoaded(data){
+    //     var car = data.scene.children[0];
+    //     car.name = 'robot';
+    //     car.position.set( 0, 27, 0 );
+    //     car.rotation.set(-Math.PI / 2 , 0, -Math.PI / 2 );
+    //     car.geometry.computeBoundingBox();
+    //     car.geometry.center();
+    //     this.editor.uuid={'robot' : car.uuid};
+    //     editor.addObject(car);
+    // });
+    var color = 0xffffff;
+    var intensity = 1;
+    var distance = 0;
+
+    var light = new THREE.PointLight( color, intensity, distance );
+    light.name = 'PointLight';
+	light.position.y = 1000;
+    editor.execute( new AddObjectCommand( light ) );
+
+	// stl modles
+    var loader = new THREE.STLLoader();
+    loader.load( './models/base.stl', function ( geometry ) {
+        var material = new THREE.MeshStandardMaterial();
+        var mesh = new THREE.Mesh( geometry, material );
+        mesh.position.set( 0, 16, 0 );
+        mesh.rotation.set( 0, -Math.PI/2, -Math.PI  );
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        mesh.geometry.computeBoundingBox();
+        mesh.geometry.center();
+        mesh.name = 'robot';
+        editor.uuid={'robot' : mesh.uuid};
+        editor.execute( new AddObjectCommand( mesh ) );
     });
+
 
 	var box = new THREE.Box3();
 

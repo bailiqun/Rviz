@@ -47,7 +47,7 @@ Menubar.Add = function ( editor ) {
     option.setTextContent( 'Map' );
     option.onClick( function () {
 		var loader = new THREE.STLLoader();
-		loader.load( './models/robot.stl', function ( geometry ) {
+		loader.load( './models/base.stl', function ( geometry ) {
 			var material = new THREE.MeshStandardMaterial();
 			var mesh = new THREE.Mesh( geometry, material );
 			mesh.position.set( 0, 0, 0 );
